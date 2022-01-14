@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class DeviceViewController: UITableViewController {
-    var devices : [Device]?;
+    var minibus : [MiniBusText]?;
     
     
     @IBAction func cancel(segue : UIStoryboardSegue){
@@ -17,17 +17,17 @@ class DeviceViewController: UITableViewController {
     @IBAction func save(segue : UIStoryboardSegue){
         if let source = segue.source as? AddEditViewController,
            let context = self.manageObjectContext {
-            if let device = source.theDevice {
+            if let device = source.theMiniBusText {
                 //for edit
                 device.texteng = source.textengTF.text
                 device.textzhone = source.textzhoneTF.text
                 device.textzhtwo = source.textzhtwoTF.text
-            } else if let newDevice = NSEntityDescription.insertNewObject(forEntityName: "Device",
-                                                                          into: context) as? Device {
+            } else if let newMiniBusText = NSEntityDescription.insertNewObject(forEntityName: "MiniBusText",
+                                                                          into: context) as? MiniBusText {
                 //for new device
-                newDevice.texteng = source.textengTF.text
-                newDevice.textzhone = source.textzhoneTF.text
-                newDevice.textzhtwo = source.textzhtwoTF.text
+                newMiniBusText.texteng = source.textengTF.text
+                newMiniBusText.textzhone = source.textzhoneTF.text
+                newMiniBusText.textzhtwo = source.textzhtwoTF.text
             }
             do {
                 try context.save();
@@ -47,13 +47,13 @@ class DeviceViewController: UITableViewController {
     
     func searchAndReloadTable(query:String){
         if let manageObjectContext = self.manageObjectContext {
-            let fetchRequest = NSFetchRequest<Device>(entityName: "Device");
+            let fetchRequest = NSFetchRequest<MiniBusText>(entityName: "MiniBusText");
             if query.count > 0 {
                 let predicate = NSPredicate(format: "name contains[cd] %@", query)
             }
             do {
-                let theDevices = try manageObjectContext.fetch(fetchRequest)
-                self.devices = theDevices
+                let theMiniBusTexts = try manageObjectContext.fetch(fetchRequest)
+                self.minibus = theMiniBusTexts
                 self.tableView.reloadData()
             } catch {
                 
@@ -63,10 +63,10 @@ class DeviceViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -85,8 +85,8 @@ class DeviceViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if let devices = self.devices {
-            return devices.count
+        if let minibus = self.minibus {
+            return minibus.count
         }
         return 0
     }
@@ -96,9 +96,11 @@ class DeviceViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         // Configure the cell...
-        if let device = self.devices?[indexPath.row] {
+        if let device = self.minibus?[indexPath.row] {
             cell.textLabel?.text = "\(device.textzhtwo!) \(device.texteng!)"
             cell.detailTextLabel?.text = "\(device.textzhone!)"
+            
+//                cell.textLabel?.text = "\(device.textzhtwo!)"
         }
         
         return cell
@@ -109,8 +111,8 @@ class DeviceViewController: UITableViewController {
             if let navVC = segue.destination as? UINavigationController {
                 if let addEditVC = navVC.topViewController as? AddEditViewController {
                     if let indexPath = tableView.indexPathForSelectedRow {
-                        if let devices = self.devices {
-                            addEditVC.theDevice = devices[indexPath.row]
+                        if let minibus = self.minibus {
+                            addEditVC.theMiniBusText = minibus[indexPath.row]
                         }
                     } }
             } }
@@ -119,49 +121,49 @@ class DeviceViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle:
                             UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let device  = self.devices?.remove(at: indexPath.row) {
+            if let device  = self.minibus?.remove(at: indexPath.row) {
                 manageObjectContext?.delete(device)
                 try? self.manageObjectContext?.save()
             }
             self.tableView.deleteRows(at: [indexPath], with: .fade);
         }
     }
-
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

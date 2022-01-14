@@ -12,7 +12,7 @@ import CoreData
 class AddEditViewController: UITableViewController {
 
     
-    var theDevice : Device?
+    var theMiniBusText : MiniBusText?
     
     @IBOutlet weak var textengTF: UITextField!
     @IBOutlet weak var textzhoneTF: UITextField!
@@ -38,7 +38,7 @@ class AddEditViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //for edit
-        if let device = theDevice {
+        if let device = theMiniBusText {
             self.textengTF.text = device.texteng!
             self.textzhoneTF.text = device.textzhone!
             self.textzhtwoTF.text = device.textzhtwo!
