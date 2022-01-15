@@ -7,8 +7,8 @@
 
 import UIKit
 import CoreData
-import RealityKit
-import Combine
+//import RealityKit
+//import Combine
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

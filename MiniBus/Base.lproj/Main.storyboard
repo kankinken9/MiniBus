@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MaA-0L-r5x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mcM-pe-5cz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -127,10 +127,10 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title=""/>
                             </button>
-                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2t-Yd-KAK">
-                                <rect key="frame" x="42" y="406" width="326" height="313"/>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nuh-dv-Oqj">
+                                <rect key="frame" x="0.0" y="318" width="414" height="421"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </arView>
+                            </arscnView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Dg-nn-VYD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -144,6 +144,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="engLB" destination="AHS-Yt-S6C" id="OX0-8I-S1j"/>
+                        <outlet property="sceneView" destination="nuh-dv-Oqj" id="dMu-pz-eAQ"/>
                         <outlet property="zhOenLB" destination="GeA-5a-ouG" id="JQM-jD-JBK"/>
                         <outlet property="zhTwoLB" destination="jca-Bl-Pzn" id="O4A-56-EVn"/>
                     </connections>

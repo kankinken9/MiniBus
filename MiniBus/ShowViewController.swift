@@ -7,8 +7,8 @@
 
 import UIKit
 import CoreData
-import RealityKit
-import Combine
+//import RealityKit
+//import Combine
 
 class ShowViewController: UITableViewController {
     var minibus : [MiniBusText]?;
