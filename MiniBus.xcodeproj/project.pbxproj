@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A16C44832792E6CC003CDE6B /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C44822792E6CC003CDE6B /* ShowViewController.swift */; };
+		A16C44852792FCED003CDE6B /* SignsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16C44842792FCED003CDE6B /* SignsViewController.swift */; };
 		A1D788472791B78900BD648E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D788462791B78900BD648E /* AppDelegate.swift */; };
 		A1D788492791B78900BD648E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D788482791B78900BD648E /* SceneDelegate.swift */; };
 		A1D7884B2791B78900BD648E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7884A2791B78900BD648E /* ViewController.swift */; };
@@ -17,7 +19,7 @@
 		A1D788612791B78A00BD648E /* MiniBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D788602791B78A00BD648E /* MiniBusTests.swift */; };
 		A1D7886B2791B78A00BD648E /* MiniBusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7886A2791B78A00BD648E /* MiniBusUITests.swift */; };
 		A1D7886D2791B78A00BD648E /* MiniBusUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7886C2791B78A00BD648E /* MiniBusUITestsLaunchTests.swift */; };
-		A1D7887E2791BCA500BD648E /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7887D2791BCA500BD648E /* DeviceViewController.swift */; };
+		A1D7887E2791BCA500BD648E /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7887D2791BCA500BD648E /* CreateViewController.swift */; };
 		A1D788802791BCB800BD648E /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7887F2791BCB800BD648E /* AddEditViewController.swift */; };
 		A1D7888B2791C53E00BD648E /* MiniBusText+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D788892791C53E00BD648E /* MiniBusText+CoreDataClass.swift */; };
 		A1D7888C2791C53E00BD648E /* MiniBusText+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D7888A2791C53E00BD648E /* MiniBusText+CoreDataProperties.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A16C44822792E6CC003CDE6B /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		A16C44842792FCED003CDE6B /* SignsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignsViewController.swift; sourceTree = "<group>"; };
 		A1D788432791B78900BD648E /* MiniBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D788462791B78900BD648E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D788482791B78900BD648E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +59,7 @@
 		A1D788662791B78A00BD648E /* MiniBusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniBusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D7886A2791B78A00BD648E /* MiniBusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniBusUITests.swift; sourceTree = "<group>"; };
 		A1D7886C2791B78A00BD648E /* MiniBusUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniBusUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A1D7887D2791BCA500BD648E /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+		A1D7887D2791BCA500BD648E /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		A1D7887F2791BCB800BD648E /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
 		A1D788892791C53E00BD648E /* MiniBusText+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MiniBusText+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1D7888A2791C53E00BD648E /* MiniBusText+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MiniBusText+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -119,8 +123,10 @@
 				A1D788542791B78A00BD648E /* LaunchScreen.storyboard */,
 				A1D788572791B78A00BD648E /* Info.plist */,
 				A1D7884F2791B78900BD648E /* MiniBus.xcdatamodeld */,
-				A1D7887D2791BCA500BD648E /* DeviceViewController.swift */,
+				A1D7887D2791BCA500BD648E /* CreateViewController.swift */,
 				A1D7887F2791BCB800BD648E /* AddEditViewController.swift */,
+				A16C44822792E6CC003CDE6B /* ShowViewController.swift */,
+				A16C44842792FCED003CDE6B /* SignsViewController.swift */,
 			);
 			path = MiniBus;
 			sourceTree = "<group>";
@@ -274,10 +280,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1D7884B2791B78900BD648E /* ViewController.swift in Sources */,
-				A1D7887E2791BCA500BD648E /* DeviceViewController.swift in Sources */,
+				A1D7887E2791BCA500BD648E /* CreateViewController.swift in Sources */,
 				A1D788472791B78900BD648E /* AppDelegate.swift in Sources */,
+				A16C44852792FCED003CDE6B /* SignsViewController.swift in Sources */,
 				A1D7888B2791C53E00BD648E /* MiniBusText+CoreDataClass.swift in Sources */,
 				A1D788802791BCB800BD648E /* AddEditViewController.swift in Sources */,
+				A16C44832792E6CC003CDE6B /* ShowViewController.swift in Sources */,
 				A1D788492791B78900BD648E /* SceneDelegate.swift in Sources */,
 				A1D7888C2791C53E00BD648E /* MiniBusText+CoreDataProperties.swift in Sources */,
 				A1D788512791B78900BD648E /* MiniBus.xcdatamodeld in Sources */,

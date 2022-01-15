@@ -1,42 +1,42 @@
 //
-//  DeviceViewController.swift
+//  ShowViewController.swift
 //  MiniBus
 //
-//  Created by kenkan on 14/1/2022.
+//  Created by kenkan on 15/1/2022.
 //
 
 import UIKit
 import CoreData
 
-class DeviceViewController: UITableViewController {
+class ShowViewController: UITableViewController {
     var minibus : [MiniBusText]?;
     
     
     @IBAction func cancel(segue : UIStoryboardSegue){
     }
-    @IBAction func save(segue : UIStoryboardSegue){
-        if let source = segue.source as? AddEditViewController,
-           let context = self.manageObjectContext {
-            if let device = source.theMiniBusText {
-                //for edit
-                device.texteng = source.textengTF.text
-                device.textzhone = source.textzhoneTF.text
-                device.textzhtwo = source.textzhtwoTF.text
-            } else if let newMiniBusText = NSEntityDescription.insertNewObject(forEntityName: "MiniBusText",
-                                                                          into: context) as? MiniBusText {
-                //for new device
-                newMiniBusText.texteng = source.textengTF.text
-                newMiniBusText.textzhone = source.textzhoneTF.text
-                newMiniBusText.textzhtwo = source.textzhtwoTF.text
-            }
-            do {
-                try context.save();
-            } catch  {
-                print("can't save");
-            }
-            self.searchAndReloadTable(query: "")
-        }
-    }
+//    @IBAction func save(segue : UIStoryboardSegue){
+//        if let source = segue.source as? AddEditViewController,
+//           let context = self.manageObjectContext {
+//            if let device = source.theMiniBusText {
+//                //for edit
+//                device.texteng = source.textengTF.text
+//                device.textzhone = source.textzhoneTF.text
+//                device.textzhtwo = source.textzhtwoTF.text
+//            } else if let newMiniBusText = NSEntityDescription.insertNewObject(forEntityName: "MiniBusText",
+//                                                                          into: context) as? MiniBusText {
+//                //for new device
+//                newMiniBusText.texteng = source.textengTF.text
+//                newMiniBusText.textzhone = source.textzhoneTF.text
+//                newMiniBusText.textzhtwo = source.textzhtwoTF.text
+//            }
+//            do {
+//                try context.save();
+//            } catch  {
+//                print("can't save");
+//            }
+//            self.searchAndReloadTable(query: "")
+//        }
+//    }
     
     var manageObjectContext : NSManagedObjectContext? {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -97,8 +97,8 @@ class DeviceViewController: UITableViewController {
         
         // Configure the cell...
         if let device = self.minibus?[indexPath.row] {
-            cell.textLabel?.text = "\(device.textzhtwo!) \(device.texteng!)"
-            cell.detailTextLabel?.text = "\(device.textzhone!)"
+            cell.textLabel?.text = "\(device.texteng!)"
+            cell.detailTextLabel?.text = "\(device.textzhone!) \(device.textzhtwo!)"
             
 //                cell.textLabel?.text = "\(device.textzhtwo!)"
         }
@@ -107,9 +107,9 @@ class DeviceViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditSegue" {
+        if segue.identifier == "ShowSignSegue" {
             if let navVC = segue.destination as? UINavigationController {
-                if let addEditVC = navVC.topViewController as? AddEditViewController {
+                if let addEditVC = navVC.topViewController as? SignsViewController {
                     if let indexPath = tableView.indexPathForSelectedRow {
                         if let minibus = self.minibus {
                             addEditVC.theMiniBusText = minibus[indexPath.row]
@@ -118,16 +118,16 @@ class DeviceViewController: UITableViewController {
             } }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle:
-                            UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if let device  = self.minibus?.remove(at: indexPath.row) {
-                manageObjectContext?.delete(device)
-                try? self.manageObjectContext?.save()
-            }
-            self.tableView.deleteRows(at: [indexPath], with: .fade);
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle:
+//                            UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            if let device  = self.minibus?.remove(at: indexPath.row) {
+//                manageObjectContext?.delete(device)
+//                try? self.manageObjectContext?.save()
+//            }
+//            self.tableView.deleteRows(at: [indexPath], with: .fade);
+//        }
+//    }
     
     /*
      // Override to support editing the table view.
