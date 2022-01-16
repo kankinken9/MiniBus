@@ -91,6 +91,13 @@ class SignsViewController: UIViewController {
     func addText() {
         
         let text = SCNText(string: "test", extrusionDepth: 1)
+        let textNode = SCNNode(geometry: text)
+        
+        textNode.position = SCNVector3Make(0, 0, 0)
+        sceneView.scene.rootNode.addChildNode(textNode)
+        
+        text.extrusionDepth = 0
+        text.font = UIFont.systemFont(ofSize: 1)
         
 //        let boxNode = SCNNode()
 //        boxNode.geometry = box
