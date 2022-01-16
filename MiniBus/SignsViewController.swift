@@ -100,37 +100,43 @@ class SignsViewController: UIViewController {
 //        text.font = UIFont.systemFont(ofSize: 1)
   
 //        let string = "Coverin:)"
-        let string = " \(self.engLB.text) \n hehe"
-        let text = SCNText(string: string, extrusionDepth: 0.1)
-        text.font = UIFont.systemFont(ofSize: 1)
-        text.flatness = 0.005
-        let textNode = SCNNode(geometry: text)
-        let fontScale: Float = 0.01
-//        textNode.scale = SCNVector3(fontScale, fontScale, fontScale)
-        textNode.scale = SCNVector3(fontScale, 0.01, -0.01)
+//        let string = "\(self.engLB.text)\n\(self.zhOenLB.text)\n\(self.zhTwoLB.text)"
+        if let device = theMiniBusText {
+            let string = "\(device.texteng!)\n\(device.textzhone!)\n\(device.textzhtwo!)"
+            let text = SCNText(string: string, extrusionDepth: 0.1)
+            text.font = UIFont.systemFont(ofSize: 1)
+            text.flatness = 0.005
+            let textNode = SCNNode(geometry: text)
+            let fontScale: Float = 0.01
+    //        textNode.scale = SCNVector3(fontScale, fontScale, fontScale)
+            textNode.scale = SCNVector3(fontScale, 0.01, -0.01)
+    //        textNode.position = SCNVector3(0, -0.1, -0.2)
+            
+            let (min, max) = (text.boundingBox.min, text.boundingBox.max)
+            let dx = min.x + 0.5 * (max.x - min.x)
+            let dy = min.y + 0.5 * (max.y - min.y)
+            let dz = min.z + 0.5 * (max.z - min.z)
+            textNode.pivot = SCNMatrix4MakeTranslation(dx, dy, dz)
+            
+            
+            let width = (max.x - min.x) * fontScale
+            let height = (max.y - min.y) * fontScale
+            let padding:Float = 0.01
+            let plane = SCNPlane(width: CGFloat(width+padding), height: CGFloat(height+padding))
+            let planeNode = SCNNode(geometry: plane)
+//            planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.5)
+            
+            planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.black
+            planeNode.geometry?.firstMaterial?.isDoubleSided = true
+    //        planeNode.position = textNode.position
+            planeNode.position = SCNVector3(0, -0.1, -0.2)
+            textNode.eulerAngles = planeNode.eulerAngles
+            planeNode.addChildNode(textNode)
+            
+            sceneView.scene.rootNode.addChildNode(planeNode)
         
         
-        let (min, max) = (text.boundingBox.min, text.boundingBox.max)
-        let dx = min.x + 0.5 * (max.x - min.x)
-        let dy = min.y + 0.5 * (max.y - min.y)
-        let dz = min.z + 0.5 * (max.z - min.z)
-        textNode.pivot = SCNMatrix4MakeTranslation(dx, dy, dz)
-        
-        
-        let width = (max.x - min.x) * fontScale
-        let height = (max.y - min.y) * fontScale
-        let plane = SCNPlane(width: CGFloat(width), height: CGFloat(height))
-        let planeNode = SCNNode(geometry: plane)
-        planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.5)
-        planeNode.geometry?.firstMaterial?.isDoubleSided = true
-        planeNode.position = textNode.position
-        textNode.eulerAngles = planeNode.eulerAngles
-        planeNode.addChildNode(textNode)
-        
-        sceneView.scene.rootNode.addChildNode(planeNode)
-        
-        
-        
+        }
 //        let boxNode = SCNNode()
 //        boxNode.geometry = box
 //        boxNode.position = SCNVector3(0, -0.1, -0.2)
