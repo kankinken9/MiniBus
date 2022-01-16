@@ -31,7 +31,8 @@ class SignsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        addBox()
+//        addBox()
+        addText()
         
     }
     
@@ -75,16 +76,28 @@ class SignsViewController: UIViewController {
 //        
 //    }
     
-    func addBox() {
+//    func addBox() {
+//
+//        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
+//
+//        let boxNode = SCNNode()
+//        boxNode.geometry = box
+//        boxNode.position = SCNVector3(0, -0.1, -0.2)
+//
+//        sceneView.scene.rootNode.addChildNode(boxNode)
+//
+//    }
+    
+    func addText() {
         
-        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
+        let text = SCNText(string: "test", extrusionDepth: 1)
         
-        let boxNode = SCNNode()
-        boxNode.geometry = box
-        boxNode.position = SCNVector3(0, 0, -0.2)
-        
-        sceneView.scene.rootNode.addChildNode(boxNode)
-        
+//        let boxNode = SCNNode()
+//        boxNode.geometry = box
+//        boxNode.position = SCNVector3(0, -0.1, -0.2)
+//
+//        sceneView.scene.rootNode.addChildNode(boxNode)
+//
     }
     
     
