@@ -17,19 +17,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEM-5c-hLU">
-                                <rect key="frame" x="116" y="89" width="183" height="158"/>
+                                <rect key="frame" x="64" y="209" width="293" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Create Text"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create Text">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="43"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="gnD-jj-GQL" kind="presentation" id="VKt-Kp-RDw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryC-CV-Eqc">
-                                <rect key="frame" x="109" y="332" width="197" height="158"/>
+                                <rect key="frame" x="64" y="468" width="293" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="MiniBus Signs"/>
+                                <buttonConfiguration key="configuration" style="plain" title="MiniBus Signs">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="38"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="UUT-kL-eCo" kind="presentation" id="2y2-OW-qzi"/>
                                 </connections>
@@ -42,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="955" y="424"/>
+            <point key="canvasLocation" x="953.62318840579712" y="423.88392857142856"/>
         </scene>
         <!--Show View Controller-->
         <scene sceneID="DQ8-fI-WYf">
@@ -128,9 +132,20 @@
                                 <buttonConfiguration key="configuration" style="gray" title=""/>
                             </button>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nuh-dv-Oqj">
-                                <rect key="frame" x="0.0" y="318" width="414" height="421"/>
+                                <rect key="frame" x="0.0" y="387" width="414" height="421"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpS-7L-Jle">
+                                <rect key="frame" x="76" y="283" width="262" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Up Load To Server">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="uploadBtnClicked:" destination="YPX-Ki-D8H" eventType="touchUpInside" id="Lsr-oq-WsB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Dg-nn-VYD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

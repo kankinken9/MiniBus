@@ -17,6 +17,8 @@ class SignsViewController: UIViewController {
     @IBOutlet weak var zhOenLB: UILabel!
     @IBOutlet weak var zhTwoLB: UILabel!
     
+    @IBOutlet weak var uploadBtn: UIButton!
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     var managedObjectContext : NSManagedObjectContext? {
@@ -31,9 +33,7 @@ class SignsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-//        addBox()
         addText()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,48 +59,8 @@ class SignsViewController: UIViewController {
         
     }
     
-    
-    
-    // AR item
-//    func addBox() {
-//        
-//        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
-//        
-//        let boxNode = SCNNode()
-//        boxNode.geometry = box
-//        boxNode.position = SCNVector3(0, 0, -0.2)
-//        
-//        let scene = SCNScene()
-//        scene.rootNode.addChildNode(boxNode)
-//        sceneView.scene = scene
-//        
-//    }
-    
-//    func addBox() {
-//
-//        let box = SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0)
-//
-//        let boxNode = SCNNode()
-//        boxNode.geometry = box
-//        boxNode.position = SCNVector3(0, -0.1, -0.2)
-//
-//        sceneView.scene.rootNode.addChildNode(boxNode)
-//
-//    }
-    
     func addText() {
         
-//        let text = SCNText(string: "test", extrusionDepth: 1)
-//        let textNode = SCNNode(geometry: text)
-//
-//        textNode.position = SCNVector3Make(0, 0, 0)
-//        sceneView.scene.rootNode.addChildNode(textNode)
-//
-//        text.extrusionDepth = 0
-//        text.font = UIFont.systemFont(ofSize: 1)
-  
-//        let string = "Coverin:)"
-//        let string = "\(self.engLB.text)\n\(self.zhOenLB.text)\n\(self.zhTwoLB.text)"
         if let device = theMiniBusText {
             let string = "\(device.texteng!)\n\(device.textzhone!)\n\(device.textzhtwo!)"
             let text = SCNText(string: string, extrusionDepth: 0.1)
@@ -108,9 +68,7 @@ class SignsViewController: UIViewController {
             text.flatness = 0.005
             let textNode = SCNNode(geometry: text)
             let fontScale: Float = 0.01
-    //        textNode.scale = SCNVector3(fontScale, fontScale, fontScale)
             textNode.scale = SCNVector3(fontScale, 0.01, -0.01)
-    //        textNode.position = SCNVector3(0, -0.1, -0.2)
             
             let (min, max) = (text.boundingBox.min, text.boundingBox.max)
             let dx = min.x + 0.5 * (max.x - min.x)
@@ -124,11 +82,9 @@ class SignsViewController: UIViewController {
             let padding:Float = 0.01
             let plane = SCNPlane(width: CGFloat(width+padding), height: CGFloat(height+padding))
             let planeNode = SCNNode(geometry: plane)
-//            planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green.withAlphaComponent(0.5)
             
             planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.black
             planeNode.geometry?.firstMaterial?.isDoubleSided = true
-    //        planeNode.position = textNode.position
             planeNode.position = SCNVector3(0, -0.1, -0.2)
             textNode.eulerAngles = planeNode.eulerAngles
             planeNode.addChildNode(textNode)
@@ -137,12 +93,35 @@ class SignsViewController: UIViewController {
         
         
         }
-//        let boxNode = SCNNode()
-//        boxNode.geometry = box
-//        boxNode.position = SCNVector3(0, -0.1, -0.2)
-//
-//        sceneView.scene.rootNode.addChildNode(boxNode)
-//
+    }
+    
+    @IBAction func uploadBtnClicked(_ sender :Any){
+        
+        
+        if let device = theMiniBusText {
+            let engText = device.texteng!;
+            let zhOne = device.textzhone!;
+            let zhTwo = device.textzhtwo!;
+            
+            let urlStr = "http://192.168.0.137/cwapi.php"
+            
+            if let url = URL(string: urlStr) {
+                var urlRequest = URLRequest(url: url)
+                urlRequest.httpMethod = "POST"
+                let body = "engtext=\(engText)&zhone=\(zhOne)&zhtwo=\(zhTwo)"
+                if let data  = body.data(using: .utf8) {
+                    let dataTask = URLSession.shared.uploadTask(with: urlRequest,
+                                                                from: data, completionHandler: {
+                        data, response, error in
+                        if let error = error{
+                            print("error: \(error.localizedDescription)")
+                        }
+    //                    self.refreshBtnClicked(self)
+                    })
+                    dataTask.resume()
+                }
+            }
+        }
     }
     
     
